@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ru.splattest.textsearcher.controller.MainWindowController"
+            prefHeight="400.0" prefWidth="600.0">
+    <TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+        <tabs>
+            <Tab text="Tab 1">
+                <content>
+                    <SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="358.0" prefWidth="600.0">
+                        <items>
+                            <TreeView fx:id="treeView"/>
+                            <VBox fx:id="vbox" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="400.0" spacing="10">
+                                <children>
+                                    <Label alignment="CENTER_LEFT" cache="true" cacheHint="SCALE" prefHeight="30.0" prefWidth="200.0" text="Please insert source directory:" textAlignment="LEFT" />
+                                    <HBox prefWidth="200.0">
+                                        <children>
+                                            <TextField fx:id="sourceTextField" HBox.hgrow="ALWAYS" prefWidth="100.0" />
+                                            <Button fx:id="directoryChooserButton" onAction="#chooseDirectory" text="Choose Dir"/>
+                                        </children>
+                                    </HBox>
+
+                                    <Label alignment="CENTER_LEFT" cache="true" cacheHint="SCALE" prefHeight="30.0" prefWidth="200.0" text="Please insert Your Input here:" textAlignment="LEFT" />
+                                    <TextField fx:id="inputTextField" prefWidth="100.0" />
+                                    <Label alignment="CENTER_LEFT" cache="true" cacheHint="SCALE" prefHeight="30.0" prefWidth="200.0" text="Please insert format:" textAlignment="LEFT" />
+                                    <TextField fx:id="formatTextField" prefWidth="100.0" />
+                                    <Button fx:id="searchButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start" text="Search" textAlignment="CENTER" />
+                                    <Label alignment="CENTER_LEFT" cache="true" cacheHint="SCALE" prefHeight="30.0" prefWidth="200.0" text="Your Input:" textAlignment="LEFT" />
+                                    <TextArea fx:id="outputText" VBox.vgrow="ALWAYS" prefHeight="100.0" prefWidth="200.0" wrapText="true" />
+                                </children>
+                            </VBox>
+                        </items>
+                    </SplitPane>
+                </content>
+            </Tab>
+            <Tab text="Tab 2">
+                <content>
+
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+
+
+</AnchorPane>
