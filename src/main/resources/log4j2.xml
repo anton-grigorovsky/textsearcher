@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <!--<RollingFile name="rollingFile"
+                     fileName="${sys:user.home}/.${sys:tAppName}/log/${sys:tAppName}.log"
+                     filePattern="${sys:user.home}/.${sys:tAppName}/log/${sys:tAppName}-%d{MM-dd-yyyy}-%i.log.zip">
+            <PatternLayout>
+                <Pattern>[%p] %d{HH:mm:ss dd.MM.yyyy} %c [%t]: %m %ex%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="20 MB"/>
+            </Policies>
+
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>-->
+
+        <Console name="console" target="SYSTEM_ERR">
+            <PatternLayout>
+                <Pattern>[%p] %d{HH:mm:ss dd.MM.yyyy} %c [%t]: %m %ex%n</Pattern>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="warn">
+            <AppenderRef ref="console"/>
+            <!--<AppenderRef ref="rollingFile"/>-->
+        </Root>
+    </Loggers>
+</Configuration>

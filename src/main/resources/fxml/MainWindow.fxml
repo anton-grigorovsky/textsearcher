@@ -5,48 +5,119 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<SplitPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="ru.splattest.textsearcher.controller.MainWindowController"
+           dividerPositions="0.3"
+           prefHeight="600.0" prefWidth="800.0"
+           fx:id="splitPane">
+    <items>
+        <BorderPane fx:id="infoPane" SplitPane.resizableWithParent="true">
+            <center>
+                <TreeView fx:id="treeView" minWidth="100"/>
+            </center>
+        </BorderPane>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ru.splattest.textsearcher.controller.MainWindowController"
-            prefHeight="400.0" prefWidth="600.0">
-    <TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
-        <tabs>
-            <Tab text="Tab 1">
-                <content>
-                    <SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="358.0" prefWidth="600.0">
-                        <items>
-                            <TreeView fx:id="treeView"/>
-                            <VBox fx:id="vbox" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="400.0" spacing="10">
-                                <children>
-                                    <Label alignment="CENTER_LEFT" cache="true" cacheHint="SCALE" prefHeight="30.0" prefWidth="200.0" text="Please insert source directory:" textAlignment="LEFT" />
-                                    <HBox prefWidth="200.0">
-                                        <children>
-                                            <TextField fx:id="sourceTextField" HBox.hgrow="ALWAYS" prefWidth="100.0" />
-                                            <Button fx:id="directoryChooserButton" onAction="#chooseDirectory" text="Choose Dir"/>
-                                        </children>
-                                    </HBox>
+        <VBox layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="400.0">
+            <children>
+                <GridPane hgap="10" vgap="10">
+                    <padding><Insets top="10" right="10" bottom="10" left="0"/></padding>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" prefWidth="100"
+                                           maxWidth="Infinity" halignment="RIGHT">
+                        </ColumnConstraints>
+                        <ColumnConstraints minWidth="200" prefWidth="200"
+                                           maxWidth="Infinity" hgrow="ALWAYS">
+                        </ColumnConstraints>
+                        <ColumnConstraints minWidth="50" prefWidth="50"
+                                           maxWidth="Infinity" halignment="LEFT">
+                        </ColumnConstraints>
+                    </columnConstraints>
+                    <Label text="Search in: " GridPane.columnIndex="0"
+                           GridPane.rowIndex="0" >
+                    </Label>
+                    <TextField fx:id="sourceTextField" prefHeight="40"
+                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-                                    <Label alignment="CENTER_LEFT" cache="true" cacheHint="SCALE" prefHeight="30.0" prefWidth="200.0" text="Please insert Your Input here:" textAlignment="LEFT" />
-                                    <TextField fx:id="inputTextField" prefWidth="100.0" />
-                                    <Label alignment="CENTER_LEFT" cache="true" cacheHint="SCALE" prefHeight="30.0" prefWidth="200.0" text="Please insert format:" textAlignment="LEFT" />
-                                    <TextField fx:id="formatTextField" prefWidth="100.0" />
-                                    <Button fx:id="searchButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start" text="Search" textAlignment="CENTER" />
-                                    <Label alignment="CENTER_LEFT" cache="true" cacheHint="SCALE" prefHeight="30.0" prefWidth="200.0" text="Your Input:" textAlignment="LEFT" />
-                                    <TextArea fx:id="outputText" VBox.vgrow="ALWAYS" prefHeight="100.0" prefWidth="200.0" wrapText="true" />
-                                </children>
-                            </VBox>
-                        </items>
-                    </SplitPane>
-                </content>
-            </Tab>
-            <Tab text="Tab 2">
-                <content>
-
-                </content>
-            </Tab>
-        </tabs>
-    </TabPane>
-
-
-</AnchorPane>
+                    <Button fx:id="directoryChooserButton" onAction="#chooseDirectory"
+                            GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <graphic>
+                            <ImageView fitHeight="18" fitWidth="18">
+                                <image>
+                                    <Image url="@../img/source.png"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Label text="Search text: " GridPane.columnIndex="0"
+                           GridPane.rowIndex="1" >
+                    </Label>
+                    <TextField fx:id="inputTextField" prefHeight="40"
+                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="File format: " GridPane.columnIndex="0"
+                           GridPane.rowIndex="2" >
+                    </Label>
+                    <TextField fx:id="formatTextField" prefWidth="100.0" text="log" prefHeight="40"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start" text="Search" textAlignment="CENTER"
+                            prefWidth="80" prefHeight="40" defaultButton="true"
+                            GridPane.columnIndex="0" GridPane.rowIndex="3"
+                            GridPane.columnSpan="2" GridPane.rowSpan="1"
+                            GridPane.halignment="CENTER">
+                        <GridPane.margin>
+                            <Insets top="20" right="0" bottom="20" left="0"></Insets>
+                        </GridPane.margin>
+                    </Button>
+                    <Button fx:id="stopButton" disable="true" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#stop" text="Stop" textAlignment="CENTER"
+                            prefWidth="80" prefHeight="40" defaultButton="true"
+                            GridPane.columnIndex="1" GridPane.rowIndex="3"
+                            GridPane.columnSpan="2" GridPane.rowSpan="1"
+                            GridPane.halignment="CENTER">
+                        <GridPane.margin>
+                            <Insets top="20" right="0" bottom="20" left="0"></Insets>
+                        </GridPane.margin>
+                    </Button>
+                </GridPane>
+                <BorderPane fx:id="navigationPane" maxHeight="100">
+                    <padding><Insets top="0" right="15" bottom="0" left="15"/></padding>
+                    <left>
+                        <Label text="Your Input:">
+                            <padding><Insets top="5" right="10" bottom="0" left="10"/></padding>
+                        </Label>
+                    </left>
+                    <right>
+                        <HBox>
+                            <children>
+                                <Label text="Matches in text">
+                                    <padding><Insets top="5" right="10" bottom="0" left="10"/></padding>
+                                </Label>
+                                <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" style="-fx-graphic: url('../img/arrow_up.png')" mnemonicParsing="false" onAction="#onFindPrevious" textAlignment="CENTER">
+                                    <graphic>
+                                        <ImageView fitHeight="20" fitWidth="20">
+                                            <image>
+                                                <Image url="@../img/arrow_up.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#onFindNext">
+                                    <graphic>
+                                        <ImageView fitHeight="20" fitWidth="20">
+                                            <image>
+                                                <Image url="@../img/arrow_down.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </right>
+                </BorderPane>
+                <TextArea fx:id="outputText" VBox.vgrow="ALWAYS" prefHeight="100.0" prefWidth="200.0" wrapText="true" />
+            </children>
+        </VBox>
+    </items>
+</SplitPane>

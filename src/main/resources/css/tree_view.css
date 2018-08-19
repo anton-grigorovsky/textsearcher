@@ -1,0 +1,52 @@
+.tree-view
+{
+    -fx-background-color: rgb(60, 63, 65);
+    -fx-background-radius: 0 0 0 0;
+    -fx-background-insets: 0;
+}
+
+.tree-view .clipped-container
+{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0 0 0 9;
+    -fx-border-color: rgb(33, 33, 33);
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-border-radius: 0;
+}
+
+.tree-view .tree-cell
+{
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(220, 220, 220);
+    -fx-background-insets: 0;
+}
+
+.tree-view .tree-cell:selected
+{
+    -fx-background-color: #272727;
+}
+
+.tree-view .tree-cell .text
+{
+    -fx-text-fill: rgb(207, 207, 207);
+    -fx-effect: dropshadow(one-pass-box, rgb(20, 20, 20), 0, 1, 0, 1);
+}
+
+.tree-cell .tree-disclosure-node .arrow
+{
+    -fx-background-color: rgb(0, 0, 0);
+    -fx-shape: "M177,20.832h1v-2.998h3v-1h-3v-3.001h-1v3.001h-3v1h3V20.832z M172,11.834v11h11v-11H172z M182,21.834h-9v-9 h9V21.834z";
+    -fx-scale-shape: false;
+    -fx-padding: 5.5;
+}
+
+.tree-cell:expanded .tree-disclosure-node .arrow
+{
+    -fx-background-color: rgb(0, 0, 0);
+    -fx-shape: "M160.125,16.834h-7v1h7V16.834z M151.125,11.834L151.125,11.834v11l0,0h11v-11H151.125z M161.125,21.834h-9 v-9h9V21.834z";
+    -fx-scale-shape: false;
+    -fx-rotate: 0;
+    -fx-padding: 5.5;
+}

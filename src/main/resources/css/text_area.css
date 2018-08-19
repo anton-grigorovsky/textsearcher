@@ -1,0 +1,26 @@
+.text-area
+{
+    -fx-highlight-fill: #706D6D;
+    -fx-text-fill: rgb(180, 180, 180);
+
+    -fx-background-repeat: repeat;
+    -fx-background-radius: 3, 3;
+    -fx-background-color: rgb(43, 43, 43);
+
+    -fx-font-weight: normal;
+    -fx-font-size: 16;
+    -fx-font-family: "sans-serif";
+
+    -fx-prompt-text-fill: rgb(200, 200, 200);
+}
+
+.text-area .viewport,
+.text-area .content
+{
+    -fx-background-color: transparent;
+}
+
+.text-area .text
+{
+    -fx-effect: dropshadow(one-pass-box, rgb(0, 0, 0), 0, 1, 0, 1);
+}

@@ -1,0 +1,126 @@
+.tab-pane
+{
+    -fx-tab-min-height: 18px;
+    -fx-tab-max-height: 18px;
+}
+
+.tab
+{
+    -fx-border-color: transparent #211D1E transparent transparent;
+}
+
+.tab .tab-label
+{
+    -fx-text-fill: #2E2B2C;
+    -fx-font-family: "Verdana";
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.tab-content-area
+{
+    -fx-background-color: rgb(43, 43, 43);
+}
+
+#additionTab
+{
+    -fx-max-width: 30px;
+    -fx-pref-width: 30px;
+}
+
+.tab:top
+{
+    -fx-background-color: linear-gradient(#4B4849 0%, #363334 100%);
+}
+
+.tab:hover
+{
+    -fx-background-color: derive(#4B4849, 10%);
+}
+
+.tab:selected
+{
+    -fx-background-color: linear-gradient(#8C8C8C 0%, #6D6A68 81%, #6D6A68 100%);
+    -fx-background-radius: 0;
+}
+
+.tab:selected .tab-label
+{
+    -fx-text-fill: #211D1E;
+    -fx-effect: dropshadow(gaussian, #918A89, 0, 0, 1, 1);
+    -fx-padding: 0 10px;
+}
+
+.tab:disabled
+{
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.tab:disabled:hover
+{
+    -fx-color: -fx-base;
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.tab-pane *.tab-header-background
+{
+    -fx-background-color: rgb(43, 43, 43);
+    -fx-effect: innershadow(two-pass-box, rgba(0, 0, 0, 0.6), 4, 0.0, 0, 0);
+    -fx-border-color: transparent transparent #8C8C8C transparent;
+}
+
+.tab-pane:top *.tab-header-area
+{
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0 0 2 1;
+}
+
+/*******************************************************************************
+* *
+* Tab pane. *
+* *
+*******************************************************************************/
+
+
+.tab-pane .tab-header-area .headers-region .tab:top
+{
+    -fx-focus-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-cursor: hand;
+}
+
+.tab-pane .tab-header-area .headers-region .tab:top
+{
+    -fx-background-color: linear-gradient(rgb(90, 90, 90), rgb(50, 50, 50));
+}
+
+.tab-pane .tab-header-area .headers-region .tab:top .tab-container .tab-label
+{
+    -fx-text-fill: rgb(120, 120, 120);
+    -fx-effect: dropshadow(one-pass-box, rgb(27, 27, 27), 0, 1, 0, 1);
+}
+
+.tab-pane .tab-header-area .headers-region .tab:selected:top
+{
+    -fx-background-color: linear-gradient(rgb(130, 130, 130), rgb(80, 80, 80));
+}
+
+.tab-pane .tab-header-area .headers-region .tab:selected:top .tab-container .tab-label
+{
+    -fx-text-fill: rgb(33, 33, 33);
+    -fx-effect: dropshadow(one-pass-box, rgb(127, 127, 127), 0, 1, 0, 1);
+}
+
+.tab-pane .tab-header-area .headers-region .tab:selected:top:hover
+{
+    -fx-background-color: linear-gradient(rgb(130, 130, 130), rgb(80, 80, 80));
+}
+
+.tab-button {
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-content-display: graphic-only;
+}

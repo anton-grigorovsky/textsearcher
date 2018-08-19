@@ -1,0 +1,27 @@
+.button
+{
+    -fx-text-fill: #C6C6C6;
+    -fx-background-radius: 3;
+
+    -fx-border-color: rgb(24, 24, 24),
+    rgb(92, 92, 92);
+    -fx-border-width: 1 1 1 1,
+    1 0 0 0;
+    -fx-border-radius: 3 3 3 3,
+    3 3 3 3;
+    -fx-border-insets: 0 0 0 0;
+    -fx-background-color: linear-gradient(to bottom, rgb(48, 48, 48) 0%, rgb(59, 59, 59) 30%, rgb(45, 45, 45) 100%);
+}
+
+.button:hover
+{
+    -fx-text-fill: #C6C6C6;
+    -fx-background-color: linear-gradient(to bottom, rgb(55, 55, 55) 0%, rgb(74, 74, 74) 30%, rgb(56, 56, 56) 100%);
+}
+
+.button:pressed {
+    -fx-text-fill: #C6C6C6;
+    -fx-background-color: linear-gradient(to bottom, rgb(39, 39, 39) 0%, rgb(47, 47, 47) 30%, rgb(39, 39, 39) 100%);
+}
+
+

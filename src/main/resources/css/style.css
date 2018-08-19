@@ -1,0 +1,50 @@
+@import "tree_view.css";
+@import "tab_pane.css";
+@import "text_area.css";
+@import "button.css";
+@import "text_field.css";
+@import "scroll_bar.css";
+
+.split-pane {
+    -fx-padding: 0;
+    -fx-background-color: rgb(60, 63, 65);
+}
+
+.split-pane *.split-pane-divider {
+    -fx-padding: 1px;
+    -fx-background-color: #1e1e1e;
+}
+
+/* horizontal the two nodes are placed to the left/right of each other. */
+.split-pane:horizontal > * > .split-pane-divider {
+    -fx-border-color: transparent;
+    -fx-background-color: #211d1e;
+    -fx-background-insets: 0;
+}
+
+.split-pane *.horizontal-grabber {
+    -fx-background-color: #211d1e;
+}
+
+.label
+{
+    -fx-text-fill: #C6C6C6;
+}
+.context-menu
+{
+    -fx-background-color: #211d1e;
+}
+.menu-item:focused
+{
+    -fx-background-color: #575454;
+}
+
+#navigationPane
+{
+
+    -fx-background-color: linear-gradient(rgb(115, 115, 115) 0%, rgb(153, 153, 153) 100%),
+    linear-gradient(rgb(80, 80, 80) 0%, rgb(106, 106, 106) 100%);
+    -fx-border-color: rgb(25, 23, 25);
+    -fx-border-width: 1px 0px 1px 0px;
+    -fx-text-fill: #211d1e;
+}

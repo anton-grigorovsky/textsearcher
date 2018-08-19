@@ -1,0 +1,27 @@
+.text-field
+{
+    -fx-text-fill: rgb(131, 131, 131);
+    -fx-font-weight: normal;
+    -fx-background-repeat: repeat;
+    -fx-background-radius: 3, 3;
+    -fx-background-color: linear-gradient(rgb(28, 28, 28) 0%, rgb(58, 58, 58) 100%),
+    linear-gradient(rgb(32, 32, 32) 0%, rgb(51, 51, 51) 100%);
+
+    -fx-border-color: rgb(24, 24, 24);
+    -fx-border-radius: 3;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, -60%);
+    -fx-highlight-fill: #706D6D;
+    -fx-max-height: 5;
+}
+
+.text-field .text
+{
+    -fx-effect: dropshadow(one-pass-box, rgb(0, 0, 0), 0, 1, 0, 1);
+}
+
+.text-field:focused
+{
+    -fx-text-fill: rgb(207, 207, 207);
+    -fx-background-color: linear-gradient(rgb(28, 28, 28) 0%, rgb(58, 58, 58) 100%),
+    linear-gradient(rgb(50, 50, 50) 0%, rgb(65, 65, 65) 100%);
+}
