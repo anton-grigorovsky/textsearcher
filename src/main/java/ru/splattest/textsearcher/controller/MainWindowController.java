@@ -1,10 +1,6 @@
 package ru.splattest.textsearcher.controller;
 
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.DirectoryChooser;
@@ -62,13 +58,8 @@ public class MainWindowController {
         directoryChooserButton.setOnAction(e -> chooseDirectory());
         treeView.setCellFactory(new FileCellFactory(path -> {
             outputText.setText(null);
-            service.getText(path, text ->
-            {
-                outputText.setText("");
-                System.gc();
-                outputText.setText(text);
-            });
-            textWalker = new TextWalker(outputText);
+            System.gc();
+            textWalker = new TextWalker(path, inputTextField.getText(),  outputText);
         }));
         infoPane.minWidthProperty().bind(splitPane.widthProperty().multiply(0.1));
         infoPane.maxWidthProperty().bind(splitPane.widthProperty().multiply(0.5));
@@ -104,6 +95,7 @@ public class MainWindowController {
                     treeView.setRoot(root);
                     infoPane.setCenter(treeView);
                 }
+                System.gc();
             });
             service.setFormat(formatTextField.getText());
             service.setPath(sourceTextField.getText());
@@ -136,18 +128,13 @@ public class MainWindowController {
     @FXML
     private void onFindNext()
     {
-        Platform.runLater(() -> {
-            textWalker.findNext(inputTextField.getText());
-        });
-
+        textWalker.findNext();
     }
 
     @FXML
     private void onFindPrevious()
     {
-        Platform.runLater(() -> {
-            textWalker.findPrevious(inputTextField.getText());
-        });
+        textWalker.findPrevious();
 
     }
 

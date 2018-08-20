@@ -3,6 +3,12 @@ package ru.splattest.textsearcher.tools;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -15,76 +21,74 @@ public class TextWalker {
         t.setDaemon(true);
         return t;
     });
+    private final List<String> BUFFER;
     private TextArea textArea;
     private String text;
-    private int caret;
+    private int caret = -1;
+    private Path file;
 
-    public TextWalker(TextArea textArea) {
+
+
+    public TextWalker(Path file, String text, TextArea textArea) {
+        this.file = file;
         this.textArea = textArea;
-
+        this.text = text;
+        BUFFER = new ArrayList<>();
+        init();
     }
 
-    public void findNext(String text) {
+    private void init()
+    {
         EXECUTOR_SERVICE.execute(() ->
         {
-            checkText(text);
-            int index = textArea.getText().indexOf(text, caret);
-            if(index == caret && caret!= 0)
-            {
-                caret++;
-                findNext(text);
-                return;
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(file.toFile()));
+                String line = null;
+                int lineNum = 0;
+                while ((line = bufferedReader.readLine()) != null)
+                {
+                    lineNum++;
+                    if(line.toLowerCase().contains(text.toLowerCase()))
+                    {
+                        BUFFER.add("line " + lineNum + ": " + line);
+                    }
+                }
             }
-            if(index == -1)
-            {
-                caret = 0;
-                findNext(text);
-                return;
-            }
-            caret = index;
-            Platform.runLater(() -> textArea.selectRange(index, index + text.length()));
-
-
+            catch (IOException e)
+            {}
+            findNext();
         });
     }
 
-    private void checkText(String str) {
 
+    public void findNext() {
+        Platform.runLater(() ->
         {
-            if(text == null)
-            {
-                text = str;
-            }
-            else if(text.equals(str))
-            {
-                return;
-            }
-            else
+            caret++;
+            if(caret >= BUFFER.size() - 1)
             {
                 caret = 0;
-                text = str;
             }
-        }
+            String line = BUFFER.get(caret);
+            textArea.setText(line);
+            int index = line.indexOf(text);
+            textArea.selectRange(index, index + text.length());
+        });
     }
 
-    public void findPrevious(String text) {
-        EXECUTOR_SERVICE.execute(() ->
+
+    public void findPrevious() {
+        Platform.runLater(() ->
         {
-            int index = textArea.getText().lastIndexOf(text, caret);
-            if(index == caret && caret!= 0)
+            caret--;
+            if(caret < 0)
             {
-                caret--;
-                findPrevious(text);
-                return;
+                caret = BUFFER.size() - 1;
             }
-            if(index == -1)
-            {
-                caret = textArea.getText().length();
-                findPrevious(text);
-                return;
-            }
-            caret = index;
-            Platform.runLater(() -> textArea.selectRange(index, index + text.length()));
+            String line = BUFFER.get(caret);
+            textArea.setText(line);
+            int index = line.indexOf(text);
+            textArea.selectRange(index, index + text.length());
         });
     }
 }
