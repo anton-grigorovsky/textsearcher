@@ -128,14 +128,19 @@ public class MainWindowController {
     @FXML
     private void onFindNext()
     {
-        textWalker.findNext();
+        if(textWalker != null)
+        {
+            textWalker.findNext();
+        }
     }
 
     @FXML
     private void onFindPrevious()
     {
-        textWalker.findPrevious();
-
+        if(textWalker != null)
+        {
+            textWalker.findPrevious();
+        }
     }
 
 
